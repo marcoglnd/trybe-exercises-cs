@@ -29,4 +29,26 @@ def scramble_word_game(list):
     else:
         print(f'Tentativas esgotadas, a palavra era {word}!')
 
-scramble_word_game(['banana', 'morango', 'acerola'])
+# scramble_word_game(['banana', 'morango', 'acerola'])
+
+# Exercício 3: Modifique o exercício anterior para que as palavras sejam lidas de um arquivo.
+# Considere que o arquivo terá cada palavra em uma linha.
+
+def scramble_word_game(file):
+    with open(file, 'r') as content:
+        list = content.read().split()
+        word = random.choice(list)
+        scrambled_word = "".join(random.sample(word, len(word)))
+        times = 0
+        answer = ''
+        while times < 3 and answer != word:
+            print(f'Consegue advinhar qual é a palavra: {scrambled_word}?')
+            print(f'{3 - times} tentativas restantes')
+            answer = input()
+            times += 1
+        if answer == word:
+            print(f'Você acertou! A palavra era {word}!')
+        else:
+            print(f'Tentativas esgotadas, a palavra era {word}!')
+
+scramble_word_game('arquivo.txt')
