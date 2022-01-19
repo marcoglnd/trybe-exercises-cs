@@ -51,4 +51,43 @@ def scramble_word_game(file):
         else:
             print(f'Tentativas esgotadas, a palavra era {word}!')
 
-scramble_word_game('arquivo.txt')
+# scramble_word_game('arquivo.txt')
+
+# Exercício 4: Dado o seguinte arquivo no formato JSON , leia seu conteúdo e calcule
+# a porcentagem de livros em cada categoria, em relação ao número total de livros.
+# O resultado deve ser escrito em um arquivo no formato CSV como o exemplo abaixo.
+
+# categoria,porcentagem
+# Python,0.23201856148491878
+# Java,0.23201856148491878
+# PHP,0.23201856148491878
+
+import json
+import csv
+
+
+def book_percentage(file):
+    with open(file, 'r') as content:
+        books = []
+        category_count = dict()
+        for line in content:
+            books.append(json.loads(line))
+        for book in books:
+            for category in book['categories']:
+                if category in category_count:
+                    category_count[category] += 1
+                else:
+                    category_count[category] = 1
+        with open("book_categories.csv", 'w') as book_categories:
+            writer = csv.writer(book_categories)
+
+            header = [
+              'categoria',
+              'porcentagem'
+            ]
+            writer.writerow(header)
+            for categories in category_count.items():
+                row = [categories[0], categories[1]/len(books) * 100]
+                writer.writerow(row)
+
+book_percentage('file.json')
