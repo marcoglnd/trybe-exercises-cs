@@ -42,4 +42,4 @@ def verify_email(string):
     if not verify_extension(string.split('.')[1]): raise ValueError('Tamanho máximo da extensão é três')
     return 'O email é válido'
 
-print(verify_email('omeusuar**io@nomewebsite.extensao'))
+# print(verify_email('omeusuar**io@nomewebsite.extensao'))
