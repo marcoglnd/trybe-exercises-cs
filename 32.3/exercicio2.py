@@ -31,7 +31,6 @@ def letters_to_phone_numbers(string):
       "WXYZ": 9
     }
     result = ''
-    regex = '/[a-zA-Z]/'
     dict_keys = list(dictionary.keys())
     for letter in string:
         if (re.search('[a-zA-Z]', letter)):

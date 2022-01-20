@@ -1,0 +1,1 @@
+from exercicio3 import verify_email
