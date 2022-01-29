@@ -24,3 +24,5 @@ class SalesReport():
         # Vamos gerar, aqui, o nosso relatório em formato JSON
         with open(self.export_file, 'w') as file:
             json.dump(self.build(), file)
+
+meu_json = SalesReport('report')
